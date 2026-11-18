@@ -1,0 +1,3 @@
+# A headless `.cljc` core, separate from the ClojureScript platform layer
+
+The games run only in ClojureScript (ADR 0001), yet the engine core is `.cljc` with no dependency on Pixi or the browser. That core covers the World, Systems, Effects, Ticks, collision detection and input snapshots. Rendering, audio, input capture and asset loading live in a separate ClojureScript platform layer. We split it this way so that game logic and replays can be tested on the JVM or in Node with no browser. The split also makes purity structural rather than a matter of discipline, because core code cannot reach Pixi.
